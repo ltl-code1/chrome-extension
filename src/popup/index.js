@@ -1,4 +1,4 @@
-import './index.scss';
+import './popup.scss';
 
 function Popup() {
 	return (

@@ -1,0 +1,11 @@
+.CET-container{
+    .circle{
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        background-color: pink;
+        z-index: 999;
+    }
+}

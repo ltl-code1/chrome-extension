@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
+import './index.scss';
 
 
 function Content(){
@@ -13,4 +14,4 @@ function Content(){
 const app = document.createElement('div');
 app.id = 'CET-container';
 document.body.appendChild(app);
-ReactDom.render(<Content />, app);
+ReactDOM.render(<Content />, app);
