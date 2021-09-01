@@ -1,3 +1,5 @@
+import './index.scss';
+
 function Popup() {
 	return (
 		<div className="Popup">
