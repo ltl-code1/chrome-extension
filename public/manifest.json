@@ -15,10 +15,11 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["<all_urls>"],
+			"matches": ["*://*/*.png", "*://*/*.jpg", "*://*/*.gif", "*://*/*.bmp"],
 			"css": ["static/css/content.css"],
 			"js": ["static/js/content.js"],
 			"run_at": "document_end"
 		}
-	]
+	],
+	"content_security_policy": "script-src 'self' https://webapi.amap.com; object-src 'self'"
 }
