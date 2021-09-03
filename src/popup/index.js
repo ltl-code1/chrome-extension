@@ -10,13 +10,21 @@ function Popup() {
 	useEffect(()=>{
 		window.AMap.plugin('AMap.Weather', function() {
 			//创建天气查询实例
-			var weather = new window.AMap.Weather();
+			let weather = new window.AMap.Weather();
 			//执行实时天气信息查询
 			weather.getLive('上海市', function(err, data) {
 				setCity(data.city);
 				setTemperature(data.temperature);
 			});
 		});
+
+		window.AMap.plugin('AMap.Geolocation', function() {
+			var geolocation = new window.AMap.Geolocation();
+			geolocation.getCurrentPosition(function(status,result){
+				console.log(result);
+		  });
+		});
+
 	}, [])
 
 	return (
