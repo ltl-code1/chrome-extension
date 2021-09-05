@@ -8,9 +8,18 @@
 		"128": "images/icon.png"
 	},
 	"manifest_version": 2,
-	"page_action": {
+	"browser_action": {
 		"default_icon": "images/icon.png",
 		"default_title": "chrome-extension",
 		"default_popup": "index.html"
-	}
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://*/*.png", "*://*/*.jpg", "*://*/*.gif", "*://*/*.bmp"],
+			"css": ["static/css/content.css"],
+			"js": ["static/js/content.js"],
+			"run_at": "document_end"
+		}
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://*.amap.com; object-src 'self'"
 }
