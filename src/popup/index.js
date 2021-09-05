@@ -12,6 +12,7 @@ function Popup() {
 	const [windPower, setWindPower] = useState(null);
 	const [windDirection, setWindDirection] = useState(null);
 	const [isCitySearch, setIsCitySearch] = useState(true);
+	const [trailer, setTrailer] = useState(null);
 
 
 	const getWeather = (city)=> {
@@ -25,6 +26,24 @@ function Popup() {
 			setWindDirection(data.windDirection);
 		});
 	}
+	const getTrailer = (city) => {
+		let weather = new window.AMap.Weather();
+		weather.getForecast(city, function(err, data) {
+			console.log(err, data);
+			setTrailer(data.forecasts);
+		});
+	}
+	const renderTrailer = () => {
+        return (
+            trailer.map((item, index) => (
+                <tr key={index}>
+					<td>{item.date} </td>
+					<td>{item.dayWeather===item.nightWeather?item.dayWeather:item.dayWeather+'转'+item.nightWeather}</td>
+					<td>{item.dayTemp}℃ / {item.nightTemp}℃</td>
+				</tr>
+            ))
+		);
+    }
 	useEffect(()=>{
 		if(isCitySearch){
 			//创建定位查询实例对象
@@ -35,10 +54,13 @@ function Popup() {
 					setCity(result.city);
 				}
 				getWeather(result.city);
+				getTrailer(result.city);
 			});
 			setIsCitySearch(false);
 		}else{
 			getWeather(city);
+			getTrailer(city);
+
 		}
 		
 	}, [city]);
@@ -46,6 +68,7 @@ function Popup() {
 	return (
 		<div className="Popup">
 			<h3 className="title">天气预报</h3>
+			<h4 className="real-time-title">实时天气：</h4>
 			<table className="weather-container">
 				<tbody>
 					<tr>
@@ -62,6 +85,17 @@ function Popup() {
 						<td>{windPower}</td>
 						<td>{windDirection}</td>
 					</tr>
+				</tbody>
+			</table>
+			<h4 className="trailer-title">天气预报：</h4>
+			<table className="weather-container">
+				<tbody>
+					<tr>
+						<th>日期</th>
+						<th>天气</th>
+						<th>温度</th>
+					</tr>
+					{trailer?renderTrailer():'<tr></tr>'}
 				</tbody>
 			</table>
 			{/* <input type="text" className="localcity" onChange={e => setLocalCity(e.target.value)}/>
