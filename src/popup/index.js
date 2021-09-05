@@ -33,11 +33,37 @@ function Popup() {
 			setTrailer(data.forecasts);
 		});
 	}
+	const dateTime = (index, week) => {
+		if(index === 0){
+			return '今天'
+		}else if(index === 1){
+			return '明天'
+		}else if(index === 2){
+			return '后天'
+		}else if(index === 3){
+			switch (week){
+				case '1':
+					return '星期一';
+				case '2':
+					return '星期二';
+				case '3':
+					return '星期三';
+				case '4':
+					return '星期四';
+				case '5':
+					return '星期五';
+				case '6':
+					return '星期六';
+				case '7':
+					return '星期日';
+			}
+		}
+	}
 	const renderTrailer = () => {
         return (
             trailer.map((item, index) => (
                 <tr key={index}>
-					<td>{item.date} </td>
+					<td className="trailer-date">{item.date} {dateTime(index, item.week)}</td>
 					<td>{item.dayWeather===item.nightWeather?item.dayWeather:item.dayWeather+'转'+item.nightWeather}</td>
 					<td>{item.dayTemp}℃ / {item.nightTemp}℃</td>
 				</tr>
