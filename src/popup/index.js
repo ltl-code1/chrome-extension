@@ -25,6 +25,27 @@ function Popup() {
 			setWindDirection(data.windDirection);
 		}); 
 	}
+<<<<<<< HEAD
+=======
+	const getTrailer = (city) => {
+		let weather = new window.AMap.Weather();
+		weather.getForecast(city, function(err, data) {
+			console.log(err, data);
+			setTrailer(data.forecasts);
+		});
+	}
+	const renderTrailer = () => {
+        return (
+            trailer.map((item, index) => (
+                <tr key={index}>
+					<td>{item.date} </td>
+					<td>{item.dayWeather===item.nightWeather?item.dayWeather:item.dayWeather+'转'+item.nightWeather}</td>
+					<td>{item.dayTemp}℃ / {item.nightTemp}℃</td>
+				</tr>
+            ))
+		);
+    }
+>>>>>>> parent of 8256f87 (edit)
 	useEffect(()=>{
 		if(isCitySearch){
 			//创建定位查询实例对象
