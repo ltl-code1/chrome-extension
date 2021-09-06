@@ -24,7 +24,7 @@ function Popup() {
 			setWeather(data.weather);
 			setWindPower(data.windPower);
 			setWindDirection(data.windDirection);
-		});
+		}); 
 	}
 	const getTrailer = (city) => {
 		let weather = new window.AMap.Weather();
