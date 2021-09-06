@@ -23,7 +23,7 @@ function Popup() {
 			setWeather(data.weather);
 			setWindPower(data.windPower);
 			setWindDirection(data.windDirection);
-		});
+		}); 
 	}
 	useEffect(()=>{
 		if(isCitySearch){
