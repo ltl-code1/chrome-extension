@@ -121,7 +121,7 @@ function Popup() {
 						<th>天气</th>
 						<th>温度</th>
 					</tr>
-					{trailer?renderTrailer():'<tr></tr>'}
+					{trailer?renderTrailer():''}
 				</tbody>
 			</table>
 			{/* <input type="text" className="localcity" onChange={e => setLocalCity(e.target.value)}/>
