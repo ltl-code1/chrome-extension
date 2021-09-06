@@ -79,16 +79,14 @@ function Popup() {
 				if (status === 'complete' && result.info === 'OK') {
 					setCity(result.city);
 				}
-				getWeather(result.city);
+				// getWeather(result.city);
 				getTrailer(result.city);
 			});
 			setIsCitySearch(false);
 		}else{
 			getWeather(city);
 			getTrailer(city);
-
 		}
-		
 	}, [city]);
 
 	return (
@@ -121,7 +119,7 @@ function Popup() {
 						<th>天气</th>
 						<th>温度</th>
 					</tr>
-					{trailer?renderTrailer():'<tr></tr>'}
+					{trailer?renderTrailer():<tr></tr>}
 				</tbody>
 			</table>
 			{/* <input type="text" className="localcity" onChange={e => setLocalCity(e.target.value)}/>
