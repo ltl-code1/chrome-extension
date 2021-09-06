@@ -58,7 +58,7 @@ function Popup() {
 					return '星期日';
 			}
 		}
-	}
+	} 
 	const renderTrailer = () => {
         return (
             trailer.map((item, index) => (
